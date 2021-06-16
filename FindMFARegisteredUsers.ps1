@@ -15,7 +15,7 @@ $Array | Add-Member -MemberType NoteProperty –name PhoneNumber –value NotSet
 
 
 #Get Users Enrolled in MFA
-$MFAUSERS = Get-MsolUser -all| Where{$_.StrongAuthenticationMethods -eq $null} | select UserPrincipalName,StrongAuthenticationMethods,StrongAuthenticationPhoneAppDetails,StrongAuthenticationRequirements,StrongAuthenticationUserDetails
+$MFAUSERS = Get-MsolUser -all| Where{$_.StrongAuthenticationMethods -ne $null} | select UserPrincipalName,StrongAuthenticationMethods,StrongAuthenticationPhoneAppDetails,StrongAuthenticationRequirements,StrongAuthenticationUserDetails
 
 
 
