@@ -1,6 +1,7 @@
 ﻿#Connect to Azure AD environment
 Import-module MSOnline
 Import-Module ActiveDirectory
+$credential = Get-credential
 Connect-MsolService -Credential $Credential
 
 #Create new object with requested information of the users.
