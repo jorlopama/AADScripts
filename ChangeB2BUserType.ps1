@@ -23,7 +23,7 @@ Select-MgProfile -Name 'beta'
 Connect-Graph -AccessToken $accessToken
 
 #Get group name and Group Members
-$groupName = (Get-MGGroup -groupid '52b04e8f-0f11-4866-a25e-bcdd9f7993e7').displayName
+$groupName = (Get-MGGroup -groupid $groupid).displayName
 $Group_Members = Get-MgGroupMember -groupid $groupID | ForEach-Object { Get-MgUser -UserId $_.Id }
 $Group_Members_count = $Group_Members.count
 
