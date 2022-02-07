@@ -4,6 +4,7 @@
 	We're using PowerShell for Microsoft Graph 
     AUTHOR: Jorge Lopez
     LASTEDIT: January 2022  
+    Change GroupID accordingly 
 #>
 
 #Obtain AccessToken for Microsoft Graph via the managed identity/Define Other Variables
@@ -13,6 +14,7 @@ $tokenResponse = Invoke-RestMethod -Method GET -Headers @{"X-IDENTITY-HEADER"="$
 $accessToken = $tokenResponse.access_token
 $UTmemberscount = 0
 $Userschanged = 0
+$GroupID = <<Your_GroupID_Here>>
 
 #Define the desired graph endpoint
 Select-MgProfile -Name 'beta'
@@ -22,7 +24,7 @@ Connect-Graph -AccessToken $accessToken
 
 #Get group name and Group Members
 $groupName = (Get-MGGroup -groupid '52b04e8f-0f11-4866-a25e-bcdd9f7993e7').displayName
-$Group_Members = Get-MgGroupMember -groupid '52b04e8f-0f11-4866-a25e-bcdd9f7993e7' | ForEach-Object { Get-MgUser -UserId $_.Id }
+$Group_Members = Get-MgGroupMember -groupid $groupID | ForEach-Object { Get-MgUser -UserId $_.Id }
 $Group_Members_count = $Group_Members.count
 
 Write-Output ("Checking members of group $groupName")
