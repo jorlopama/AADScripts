@@ -24,7 +24,7 @@ Connect-Graph -AccessToken $accessToken
 
 #Get group name and Group Members
 $groupName = (Get-MGGroup -groupid $GroupID).displayName
-$Group_Members = Get-MgGroupMember -groupid $groupID | ForEach-Object { Get-MgUser -UserId $_.Id }
+$Group_Members = Get-MgGroupMember -groupid $GroupID | ForEach-Object { Get-MgUser -UserId $_.Id }
 $Group_Members_count = $Group_Members.count
 
 Write-Output ("Checking members of group $groupName")
