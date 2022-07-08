@@ -21,7 +21,7 @@
 $results_List = @()
 Select-MgProfile -Name "beta"
 Connect-MgGraph -Scopes "UserAuthenticationMethod.Read.All","Group.Read.All"
-$GroupID = '1341fbd4-239d-45d9-aeb9-f51d00ee3ead'
+$GroupID = 'Group_Object_ID'
 $Group_Members = Get-MgGroupMember -groupid $groupID | ForEach-Object { Get-MgUser -UserId $_.Id }
 
  foreach ($User in $Group_Members) {
